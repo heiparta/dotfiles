@@ -94,6 +94,10 @@ let g:pymode_rope = 0
 "Bundle 'pythoncomplete'
 Bundle 'python_match.vim'
 Bundle 'leshill/vim-json'
+Bundle 'moll/vim-node'
+
+Bundle 'walm/jshint.vim'
+au BufWritePost *.js :JSHint
 Bundle 'groenewege/vim-less'
 Bundle 'pangloss/vim-javascript'
 
