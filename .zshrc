@@ -35,6 +35,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 alias gvim='gvim --remote-silent'
+mvim() { /usr/local/bin/mvim --remote-silent "$*"; }
 
 unsetopt correct_all
 

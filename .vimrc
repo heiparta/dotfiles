@@ -82,7 +82,7 @@ let g:pymode_lint_ignore="E501,W601,E302,F0401,C0302,I0011,C0301,E251,E221,C0326
 let g:pymode_breakpoint = 1
 let g:pymode_breakpoint_bind = '<leader>b'
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 " let Vundle manage Vundle
