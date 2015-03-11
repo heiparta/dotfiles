@@ -1,9 +1,21 @@
 if has("gui_gtk2")
-    set guifont=Droid\ Sans\ Mono\ 10,Menlo\ Regular\ 11,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
+    set guifont=Droid\ Sans\ Mono\ 10,Monaco\ 12,Menlo\ Regular\ 11,Consolas\ Regular\ 12,Courier\ New\ Regular\ 14
 else
-    set guifont=Andale\ Mono\ Regular:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
+    set guifont=Andale\ Mono\ Regular:h12,Monaco:h12,Menlo\ Regular:h11,Consolas\ Regular:h12,Courier\ New\ Regular:h14
 endif
 set guioptions-=T
+
+" Backups and swap files
+set backup
+let s:uname = system("echo -n \"$(uname)\"")
+if !v:shell_error && s:uname == "Linux"
+    set directory=/tmp
+    set backupdir=/tmp
+else
+    set directory=/private/tmp
+    set dir=/private/tmp
+    set backupdir=/private/tmp
+endif
 
 set tags=~/.vimtags
 
