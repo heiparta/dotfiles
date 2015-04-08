@@ -55,3 +55,5 @@ complete -o nospace -F _nosetests nosetests
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
+
+PROMPT='${ret_status}%{$FG[135]%}(%m)%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'

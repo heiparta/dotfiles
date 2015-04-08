@@ -142,7 +142,7 @@ Bundle 'scrooloose/nerdcommenter'
 
 Bundle 'mileszs/ack.vim'
 
-Bundle 'fholgado/minibufexpl.vim'
+"Bundle 'fholgado/minibufexpl.vim'
 
 filetype plugin indent on
 
@@ -155,4 +155,6 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+autocmd FileType python set colorcolumn=120
 
