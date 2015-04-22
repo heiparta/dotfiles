@@ -73,6 +73,10 @@ cnoreabbrev Bd Bclose
 :map <Leader>d :CommandTBuffer<CR>
 :map <Leader>F :CommandT %:p:h<CR>
 
+" Copying current file name / full path to clipboard
+nmap <Leader>cs :let @+=expand("%:t")<CR>
+nmap <Leader>cl :let @+=expand("%:p")<CR>
+
 " Remove trailing whitespaces
 fun! <SID>StripTrailingWhitespaces()
     let l = line(".")
@@ -87,6 +91,13 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 set foldlevel=99
+
+set laststatus=2
+set statusline=%<%f\ " Filename
+set statusline+=%w%h%m%r " Options
+set statusline+=\ [%{&ff}/%Y] " Filetype
+set statusline+=\ [%{getcwd()}] " Current dir
+set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
 
 let g:pymode_lint_checkers=['pyflakes', 'pep8']
 let g:pymode_lint_config='~/.pylint.rc'
@@ -116,6 +127,8 @@ Bundle 'pangloss/vim-javascript'
 "Bundle 'Shougo/neocomplcache'
 "Bundle 'Valloric/YouCompleteMe'
 
+Bundle 'Valloric/QFixToggle'
+
 "Bundle 'scrooloose/syntastic'
 "Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
@@ -129,7 +142,7 @@ let g:CommandTCancelMap = "<Esc>"
 Bundle 'flazz/vim-colorschemes'
 
 Bundle 'xolox/vim-misc'
-"Bundle 'xolox/vim-easytags'
+Bundle 'xolox/vim-easytags'
 let g:easytags_async = 1
 let g:easytags_syntax_keyword = 'always'
 
@@ -139,6 +152,7 @@ Bundle 'sjl/gundo.vim'
 nnoremap <F5> :GundoToggle<CR>
 
 Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
 
 Bundle 'mileszs/ack.vim'
 
