@@ -133,6 +133,7 @@ Bundle 'Valloric/QFixToggle'
 "Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
 Bundle 'Lokaltog/vim-easymotion'
 
 Bundle 'git://git.wincent.com/command-t.git'

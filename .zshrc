@@ -38,6 +38,7 @@ alias gvim='gvim --remote-silent'
 mvim() { /usr/local/bin/mvim --remote-silent "$*"; }
 
 unsetopt correct_all
+unsetopt cdable_vars
 
 autoload -U compinit
 compinit
