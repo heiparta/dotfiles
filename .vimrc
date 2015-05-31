@@ -173,3 +173,4 @@ autocmd BufWinLeave * call clearmatches()
 
 autocmd FileType python set colorcolumn=120
 
+source ~/.vimrc.local
