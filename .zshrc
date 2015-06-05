@@ -55,9 +55,6 @@ complete -o nospace -F _nosetests nosetests
 
 PROMPT='${ret_status}%{$FG[135]%}(%m)%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
-export NVM_DIR="/home/parthe/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
 if [[ -e ".zshrc.local" ]]; then
     source ~/.zshrc.local
 fi
