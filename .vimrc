@@ -174,4 +174,6 @@ autocmd BufWinLeave * call clearmatches()
 autocmd FileType python set colorcolumn=120
 autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
-source ~/.vimrc.local
+if !empty(glob("path/to/file"))
+    source ~/.vimrc.local
+endif
