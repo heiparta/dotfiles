@@ -74,8 +74,8 @@ cnoreabbrev Bd Bclose
 :map <Leader>F :CommandT %:p:h<CR>
 
 " Copying current file name / full path to clipboard
-nmap <Leader>cs :let @+=expand("%:t")<CR>
-nmap <Leader>cl :let @+=expand("%:p")<CR>
+nmap <Leader>ns :let @+=expand("%:t")<CR>
+nmap <Leader>nl :let @+=expand("%:p")<CR>
 
 " Remove trailing whitespaces
 fun! <SID>StripTrailingWhitespaces()
@@ -89,6 +89,14 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+map <leader>2 [M
+map <leader>3 ]M
+map <leader>1 [C
+map <leader>4 ]C
+map <leader>5 :bp<CR>
+map <leader>6 :bn<CR>
+map <leader>s ysiw
 
 set foldlevel=99
 
@@ -114,14 +122,14 @@ Bundle 'gmarik/Vundle.vim'
 
 Bundle 'klen/python-mode'
 let g:pymode_rope = 0
-"Bundle 'pythoncomplete'
+Bundle 'pythoncomplete'
 Bundle 'python_match.vim'
-Bundle 'leshill/vim-json'
 Bundle 'moll/vim-node'
 
 Bundle 'walm/jshint.vim'
 au BufWritePost *.js :JSHint
 Bundle 'groenewege/vim-less'
+Bundle 'elzr/vim-json'
 Bundle 'pangloss/vim-javascript'
 
 "Bundle 'Shougo/neocomplcache'
@@ -129,14 +137,16 @@ Bundle 'pangloss/vim-javascript'
 
 Bundle 'Valloric/QFixToggle'
 
-"Bundle 'scrooloose/syntastic'
-"Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'Lokaltog/vim-easymotion'
 
 Bundle 'git://git.wincent.com/command-t.git'
+let g:CommandTWildIgnore=&wildignore . ",**/node_modules/*"
 let g:CommandTCancelMap = "<Esc>"
 "let g:CommandTSelectNextMap = ['<C-j>', '<ESC>OB']
 "let g:CommandTSelectPrevMap = ['<C-k>', '<ESC>OA']
@@ -151,9 +161,6 @@ Bundle 'rbgrouleff/bclose.vim'
 
 Bundle 'sjl/gundo.vim'
 nnoremap <F5> :GundoToggle<CR>
-
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
 
 Bundle 'mileszs/ack.vim'
 
@@ -170,7 +177,7 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
-
+ 
 autocmd FileType python set colorcolumn=120
 autocmd FileType javascript setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
