@@ -50,6 +50,10 @@ noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 inoremap jk <ESC>
 inoremap JK <ESC>
+inoremap jj {
+inoremap kk }
+inoremap ll [
+inoremap <char-246><char-246> ]
 vnoremap > >gv
 vnoremap < <gv
 :let mapleader = ","
