@@ -55,6 +55,10 @@ complete -o nospace -F _nosetests nosetests
 
 PROMPT='${ret_status}%{$FG[135]%}(%m)%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+
 if [[ -e ~/.zshrc.local ]]; then
     source ~/.zshrc.local
 fi
@@ -62,3 +66,7 @@ fi
 if [[ -e ~/.zshrc.`hostname` ]]; then
     source ~/.zshrc.`hostname`
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
