@@ -50,10 +50,10 @@ noremap   <Left>   <NOP>
 noremap   <Right>  <NOP>
 inoremap jk <ESC>
 inoremap JK <ESC>
-inoremap jj {
-inoremap kk }
-inoremap ll [
-inoremap <char-246><char-246> ]
+inoremap <D-j> {
+inoremap <D-k> }
+inoremap <D-u> [
+inoremap <D-i> ]
 vnoremap > >gv
 vnoremap < <gv
 :let mapleader = ","
@@ -63,7 +63,7 @@ map <F11> :QFix<CR>
 :noremap <F4> :set hlsearch! hlsearch?<CR>
 
 " Press § to switch between two last buffers
-:nnoremap <Char-167> :e#<CR>
+:nnoremap <Char-167> :e#<CR>{{
 :map <C-x> :Bclose<CR>
 :map <A-C-x> :Bclose!<CR>
 cnoreabbrev W w
