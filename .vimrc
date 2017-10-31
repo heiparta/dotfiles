@@ -130,10 +130,11 @@ Bundle 'pythoncomplete'
 Bundle 'python_match.vim'
 Bundle 'moll/vim-node'
 
-Bundle 'walm/jshint.vim'
-au BufWritePost *.js :JSHint
+"Bundle 'walm/jshint.vim'
+"au BufWritePost *.js :JSHint
 Bundle 'groenewege/vim-less'
 Bundle 'elzr/vim-json'
+let g:vim_json_syntax_conceal = 0
 Bundle 'pangloss/vim-javascript'
 
 "Bundle 'Shougo/neocomplcache'
@@ -142,6 +143,9 @@ Bundle 'pangloss/vim-javascript'
 Bundle 'Valloric/QFixToggle'
 
 Bundle 'scrooloose/syntastic'
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_jump=1
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tpope/vim-fugitive'
