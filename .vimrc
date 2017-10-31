@@ -113,7 +113,7 @@ set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
 
 let g:pymode_lint_checkers=['pyflakes', 'pep8']
 let g:pymode_lint_config='~/.pylint.rc'
-let g:pymode_lint_ignore="E501,W601,E302,F0401,C0302,I0011,C0301,E251,E221,C0326,C0111,E222,W0201,E128,C,R,W0702,E126,E127,W0511,E0611,W0703,E123,E125,E502"
+let g:pymode_lint_ignore="E501,F0401,C0302,I0011,C301,C0111,E0222,R,W0702,W0511,W0703"
 let g:pymode_breakpoint = 1
 let g:pymode_breakpoint_bind = '<leader>b'
 
