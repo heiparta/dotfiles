@@ -111,68 +111,81 @@ set statusline+=\ [%{&ff}/%Y] " Filetype
 set statusline+=\ [%{getcwd()}] " Current dir
 set statusline+=%=%-14.(%l,%c%V%)\ %p%% " Right aligned file nav info
 
-let g:pymode_lint_checkers=['pyflakes', 'pep8']
-let g:pymode_lint_config='~/.pylint.rc'
-let g:pymode_lint_ignore="E501,F0401,C0302,I0011,C301,C0111,E0222,R,W0702,W0511,W0703"
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_bind = '<leader>b'
+"let g:pymode_lint_checkers=['pyflakes', 'pep8']
+"let g:pymode_lint_config='~/.pylint.rc'
+"let g:pymode_lint_ignore="E501,F0401,C0302,I0011,C301,C0111,E0222,R,W0702,W0511,W0703"
+"let g:pymode_breakpoint = 1
+"let g:pymode_breakpoint_bind = '<leader>b'
 
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#rc()
 
 " let Vundle manage Vundle
 " required!
-Bundle 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle.vim'
 
-Bundle 'klen/python-mode'
-let g:pymode_rope = 0
-Bundle 'pythoncomplete'
-Bundle 'python_match.vim'
-Bundle 'moll/vim-node'
+"Plugin 'klen/python-mode'
+"let g:pymode_rope = 0
+Plugin 'pythoncomplete'
+Plugin 'python_match.vim'
+Plugin 'moll/vim-node'
 
-"Bundle 'walm/jshint.vim'
+"Plugin 'walm/jshint.vim'
 "au BufWritePost *.js :JSHint
-Bundle 'groenewege/vim-less'
-Bundle 'elzr/vim-json'
+Plugin 'groenewege/vim-less'
+Plugin 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
-Bundle 'pangloss/vim-javascript'
+Plugin 'pangloss/vim-javascript'
 
-"Bundle 'Shougo/neocomplcache'
-"Bundle 'Valloric/YouCompleteMe'
+"Plugin 'Shougo/neocomplcache'
+"Plugin 'Valloric/YouCompleteMe'
 
-Bundle 'Valloric/QFixToggle'
+Plugin 'Valloric/QFixToggle'
 
-Bundle 'scrooloose/syntastic'
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_jump=1
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'w0rp/ale'
+let g:ale_linters = {
+\   'python': ['pylint'],
+\}
 
-Bundle 'git://git.wincent.com/command-t.git'
+"Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
+"let g:syntastic_javascript_checkers = ['eslint']
+"let g:syntastic_always_populate_loc_list=1
+"let g:syntastic_auto_jump=1
+"let g:syntastic_python_flake8_exec = 'python3'
+"let g:syntastic_python_flake8_args = ['-m', 'flake8']
+"let g:syntastic_python_checkers=['pylint']
+"let g:syntastic_python_checkers=['flake8']
+"let g:syntastic_python_flake8_args='--ignore=E501'
+"let g:syntastic_aggregate_errors = 1
+
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'Lokaltog/vim-easymotion'
+
+Plugin 'git://git.wincent.com/command-t.git'
 let g:CommandTWildIgnore=&wildignore . ",**/node_modules/*"
 let g:CommandTCancelMap = "<Esc>"
 "let g:CommandTSelectNextMap = ['<C-j>', '<ESC>OB']
 "let g:CommandTSelectPrevMap = ['<C-k>', '<ESC>OA']
-Bundle 'flazz/vim-colorschemes'
+Plugin 'flazz/vim-colorschemes'
 
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 let g:easytags_async = 1
 let g:easytags_syntax_keyword = 'always'
 
-Bundle 'rbgrouleff/bclose.vim'
+Plugin 'rbgrouleff/bclose.vim'
 
-Bundle 'sjl/gundo.vim'
+Plugin 'sjl/gundo.vim'
 nnoremap <F5> :GundoToggle<CR>
 
-Bundle 'mileszs/ack.vim'
+Plugin 'mileszs/ack.vim'
 
-"Bundle 'fholgado/minibufexpl.vim'
+"Plugin 'fholgado/minibufexpl.vim'
 
 filetype plugin indent on
 
