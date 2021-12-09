@@ -27,14 +27,24 @@ ZSH_THEME="robbyrussell"
 # COMPLETION_WAITING_DOTS="true"
 #
 #
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+if [ -d "$HOME/.pyenv" ]; then
+	export PYENV_ROOT="$HOME/.pyenv"
+	export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init --path)"
+	eval "$(pyenv init -)"
+fi
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(autojump git python pyenv compleat ssh-agent history-substring-search)
+if [ -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
+	plugins+=(zsh-autosuggestions)
+else
+	echo "zsh-autosuggestions is not installed. Install it by running:"
+	echo "git clone https://github.com/zsh-users/zsh-autosuggestions \
+${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions"
+fi
 
 source $ZSH/oh-my-zsh.sh
 
@@ -86,3 +96,6 @@ if [ -d $HOME/.poetry/bin ]; then
 fi
 
 export EDITOR=vim
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -d "$HOME/.poetry/bin" ] && export PATH="$HOME/.poetry/bin:$PATH"
