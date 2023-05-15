@@ -24,20 +24,12 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment following line if you want red dots to be displayed while waiting for completion
-# COMPLETION_WAITING_DOTS="true"
-#
-#
-if [ -d "$HOME/.pyenv" ]; then
-	export PYENV_ROOT="$HOME/.pyenv"
-	export PATH="$PYENV_ROOT/bin:$PATH"
-	eval "$(pyenv init --path)"
-	eval "$(pyenv init -)"
-fi
+COMPLETION_WAITING_DOTS="true"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump git python pyenv compleat ssh-agent history-substring-search)
+plugins=(autojump git python compleat ssh-agent history-substring-search)
 if [ -d "$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions" ]; then
 	plugins+=(zsh-autosuggestions)
 else
@@ -68,7 +60,21 @@ _nosetests()
 }
 complete -o nospace -F _nosetests nosetests
 
-PROMPT='${ret_status}%{$FG[135]%}(%m)%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
+aws_prompt_info() {
+    if [[ -z "${AWS_PROFILE}" ]]; then
+    else
+	    echo "☁️%{$fg[yellow]%}$AWS_PROFILE"
+    fi
+}
+# Fix dynamic AWS profiles with CDK 
+export AWS_SDK_LOAD_CONFIG=1
+export AWS_DEFAULT_REGION="eu-west-1"
+
+if [ -f ~/.dotfiles/scripts/awsrole.zsh ]; then
+    source ~/.dotfiles/scripts/awsrole.zsh
+fi
+
+PROMPT='${ret_status}%{$FG[135]%}(%m)%{$fg_bold[green]%}%p$(aws_prompt_info) %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}'
 
 if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
     source /usr/local/bin/virtualenvwrapper.sh
@@ -94,8 +100,28 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 if [ -d $HOME/.poetry/bin ]; then
     export PATH="$HOME/.poetry/bin:$PATH"
 fi
+export PATH="$HOME/.local/bin:$PATH"
 
 export EDITOR=vim
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -d "$HOME/.poetry/bin" ] && export PATH="$HOME/.poetry/bin:$PATH"
+
+[ -d "$HOME/.asdf" ] && . "$HOME/.asdf/asdf.sh"
+
+# Print Unix timestamp for current time minus N hours
+unix_ts_since_hours() {
+        HOURS="${1:=10}"
+        python3 -c "from datetime import datetime, timedelta; print(int((datetime.utcnow() - timedelta(hours=$HOURS)).timestamp()))"
+}
+
+git_main_branch() {
+	for b in main master ci; do
+		if [[ -f "./.git/refs/heads/$b" ]]; then
+			echo "$b"
+			return
+		fi
+	done
+	echo "Could not deduce the git main branch" >&2
+}
+
