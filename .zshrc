@@ -118,8 +118,6 @@ export EDITOR=vim
 
 [ -d "$HOME/.poetry/bin" ] && export PATH="$HOME/.poetry/bin:$PATH"
 
-[ -d "$HOME/.asdf" ] && . "$HOME/.asdf/asdf.sh"
-
 alias 'export-aws-credentials=eval $(aws configure export-credentials --format env --profile $AWS_PROFILE)'
 
 # Print Unix timestamp for current time minus N hours
@@ -193,4 +191,4 @@ git_clone() {
 
 [[ "$TERM_PROGRAM" == "vscode" ]] && . "$(code --locate-shell-integration-path zsh)"
 
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
